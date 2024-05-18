@@ -35,7 +35,6 @@
             <th>Phone Number</th>
             <th>Salary</th>
             <th>Address</th>
-            <th>Status</th>
             <th>Assigned Booking Tracking ID</th>
             <th>Booking Status</th>
         </tr>
@@ -48,7 +47,7 @@
                 <td>@shipper.dPhoneNo</td>
                 <td>@shipper.dSalary</td>
                 <td>@shipper.dAddress</td>
-                <td>@(shipper.status ? "Active" : "Inactive")</td>
+              
                 @if (shipper.bookings != null && shipper.bookings.Any())
                 {
                     <td>@string.Join(", ", shipper.bookings.Select(b => b.TrackingNumber))</td>

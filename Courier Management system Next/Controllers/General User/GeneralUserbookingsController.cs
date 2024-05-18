@@ -69,8 +69,9 @@ namespace Courier_Management_system_Next.Controllers.General_User
         }
         public ActionResult GetCourierByTrackingNumber()
         {
-            string truckingNumber = Session["TrackingNumber"] as string;
-            var Courier = db.bookings.Where(u => u.TrackingNumber == truckingNumber);
+
+            string trackingNumber = Session["TrackingNumber"] as string;
+            var Courier = db.bookings.Where(u => u.TrackingNumber == trackingNumber);
 
             return View(Courier.ToList());
 

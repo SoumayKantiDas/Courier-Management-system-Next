@@ -35,7 +35,6 @@
             <th>User ID</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Status</th>
             <th>Booking Tracking Number</th>
             <th>Booking Date</th>
             <th>Booking Status</th>
@@ -46,7 +45,7 @@
                 <td>@user.SiteUserid</td>
                 <td>@user.username</td>
                 <td>@user.email</td>
-                <td>@(user.status? "Active" : "Inactive")</td>
+              
                 @if (user.bookings != null && user.bookings.Any())
                 {
                     foreach (var booking in user.bookings)
