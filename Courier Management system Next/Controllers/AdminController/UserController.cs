@@ -17,9 +17,12 @@ namespace Courier_Management_system_Next.Controllers.AdminController
         // GET: User
         public ActionResult Index()
         {
-            int? userId = Session["UserId"] as int?;
-            var siteusers = db.siteusers
-              .Where(s => s.SiteUserid == userId) // Filter by user ID
+            {// Retrieve user ID from session
+                int? SiteUserid = Session["SiteUserid"] as int?;
+                // Retrieve role ID from session
+                int? userTypeId = Session["UserTypeId"] as int?;
+                var siteusers = db.siteusers
+              .Where(s => s.SiteUserid == SiteUserid) // Filter by user ID
               .ToList();
             return View(siteusers.ToList());
         }
