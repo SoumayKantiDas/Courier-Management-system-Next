@@ -24,9 +24,9 @@ namespace Courier_Management_system_Next.Controllers.AdminController
                 var siteusers = db.siteusers
               .Where(s => s.SiteUserid == SiteUserid) // Filter by user ID
               .ToList();
-            return View(siteusers.ToList());
+                return View(siteusers.ToList());
+            }
         }
-
         
 
         protected override void Dispose(bool disposing)
