@@ -1,0 +1,153 @@
+﻿@model IEnumerable<Courier_Management_system_Next.Models.booking>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bookOriginFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookOriginLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookOriginAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookOriginPhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookDestFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookDestLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookDestAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookDestPhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookingProductWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrackingNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statusbit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookweight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaInfo.aAreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaInfo1.aAreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingDelivareyType.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deliveryMan.dFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.siteuser.username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookOriginFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookOriginLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookOriginAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookOriginPhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookDestFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookDestLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookDestAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookDestPhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookingProductWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrackingNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.statusbit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookweight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaInfo.aAreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaInfo1.aAreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookingDelivareyType.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deliveryMan.dFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.siteuser.username)
+        </td>
+        <td>
+        
+            @Html.ActionLink("Details", "Details", new { id=item.bookID }) |
+        
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CourierManagementsystemNextdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AreaInfoes">
+          <Key>
+            <PropertyRef Name="aAreaID" />
+          </Key>
+          <Property Name="aAreaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aAreaName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aCost" Type="float" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookingDelivareyType">
+          <Key>
+            <PropertyRef Name="BookingTypeId" />
+          </Key>
+          <Property Name="BookingTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BTCost" Type="float" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bookings">
+          <Key>
+            <PropertyRef Name="bookID" />
+          </Key>
+          <Property Name="bookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookOriginFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookOriginLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookOriginAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookOriginPhoneNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookDestFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookDestLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookDestAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookDestPhoneNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookingProductWeight" Type="float" Nullable="false" />
+          <Property Name="bookDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookingTypeId" Type="int" Nullable="false" />
+          <Property Name="bCost" Type="float" Nullable="false" />
+          <Property Name="SiteUserid" Type="int" Nullable="false" />
+          <Property Name="dID" Type="int" Nullable="false" />
+          <Property Name="OriginAreaID" Type="int" Nullable="false" />
+          <Property Name="DestAreaID" Type="int" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="TrackingNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookingDate" Type="datetime" Nullable="false" />
+          <Property Name="statusbit" Type="bit" Nullable="false" />
+          <Property Name="bookweight" Type="float" />
+        </EntityType>
+        <EntityType Name="deliveryMen">
+          <Key>
+            <PropertyRef Name="dID" />
+          </Key>
+          <Property Name="dID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dPhoneNo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="dSalary" Type="float" Nullable="false" />
+          <Property Name="dAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="siteusers">
+          <Key>
+            <PropertyRef Name="SiteUserid" />
+          </Key>
+          <Property Name="SiteUserid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usertype" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__bookings__Bookin__48CFD27E">
+          <End Role="BookingDelivareyType" Type="Self.BookingDelivareyType" Multiplicity="1" />
+          <End Role="bookings" Type="Self.bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingDelivareyType">
+              <PropertyRef Name="BookingTypeId" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="BookingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bookings__DestAr__4CA06362">
+          <End Role="AreaInfoes" Type="Self.AreaInfoes" Multiplicity="1" />
+          <End Role="bookings" Type="Self.bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaInfoes">
+              <PropertyRef Name="aAreaID" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="DestAreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bookings__dID__4AB81AF0">
+          <End Role="deliveryMen" Type="Self.deliveryMen" Multiplicity="1" />
+          <End Role="bookings" Type="Self.bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deliveryMen">
+              <PropertyRef Name="dID" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="dID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bookings__Origin__4BAC3F29">
+          <End Role="AreaInfoes" Type="Self.AreaInfoes" Multiplicity="1" />
+          <End Role="bookings" Type="Self.bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaInfoes">
+              <PropertyRef Name="aAreaID" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="OriginAreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bookings__SiteUs__49C3F6B7">
+          <End Role="siteusers" Type="Self.siteusers" Multiplicity="1" />
+          <End Role="bookings" Type="Self.bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="siteusers">
+              <PropertyRef Name="SiteUserid" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="SiteUserid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__siteusers__UserT__440B1D61">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="siteusers" Type="Self.siteusers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="siteusers">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CourierManagementsystemNextdbModelStoreContainer">
+          <EntitySet Name="AreaInfoes" EntityType="Self.AreaInfoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingDelivareyType" EntityType="Self.BookingDelivareyType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bookings" EntityType="Self.bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="deliveryMen" EntityType="Self.deliveryMen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="siteusers" EntityType="Self.siteusers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__bookings__Bookin__48CFD27E" Association="Self.FK__bookings__Bookin__48CFD27E">
+            <End Role="BookingDelivareyType" EntitySet="BookingDelivareyType" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bookings__DestAr__4CA06362" Association="Self.FK__bookings__DestAr__4CA06362">
+            <End Role="AreaInfoes" EntitySet="AreaInfoes" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bookings__dID__4AB81AF0" Association="Self.FK__bookings__dID__4AB81AF0">
+            <End Role="deliveryMen" EntitySet="deliveryMen" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bookings__Origin__4BAC3F29" Association="Self.FK__bookings__Origin__4BAC3F29">
+            <End Role="AreaInfoes" EntitySet="AreaInfoes" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bookings__SiteUs__49C3F6B7" Association="Self.FK__bookings__SiteUs__49C3F6B7">
+            <End Role="siteusers" EntitySet="siteusers" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__siteusers__UserT__440B1D61" Association="Self.FK__siteusers__UserT__440B1D61">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="siteusers" EntitySet="siteusers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CourierManagementsystemNextdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AreaInfo">
+          <Key>
+            <PropertyRef Name="aAreaID" />
+          </Key>
+          <Property Name="aAreaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aAreaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aCost" Type="Double" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__bookings__DestAr__4CA06362" FromRole="AreaInfoes" ToRole="bookings" />
+          <NavigationProperty Name="bookings1" Relationship="Self.FK__bookings__Origin__4BAC3F29" FromRole="AreaInfoes" ToRole="bookings" />
+        </EntityType>
+        <EntityType Name="BookingDelivareyType">
+          <Key>
+            <PropertyRef Name="BookingTypeId" />
+          </Key>
+          <Property Name="BookingTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BTCost" Type="Double" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__bookings__Bookin__48CFD27E" FromRole="BookingDelivareyType" ToRole="bookings" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="bookID" />
+          </Key>
+          <Property Name="bookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookOriginFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookOriginLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookOriginAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookOriginPhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookDestFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookDestLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookDestAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookDestPhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookingProductWeight" Type="Double" Nullable="false" />
+          <Property Name="bookDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BookingTypeId" Type="Int32" Nullable="false" />
+          <Property Name="bCost" Type="Double" Nullable="false" />
+          <Property Name="SiteUserid" Type="Int32" Nullable="false" />
+          <Property Name="dID" Type="Int32" Nullable="false" />
+          <Property Name="OriginAreaID" Type="Int32" Nullable="false" />
+          <Property Name="DestAreaID" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TrackingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bookingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="statusbit" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AreaInfo" Relationship="Self.FK__bookings__DestAr__4CA06362" FromRole="bookings" ToRole="AreaInfoes" />
+          <NavigationProperty Name="AreaInfo1" Relationship="Self.FK__bookings__Origin__4BAC3F29" FromRole="bookings" ToRole="AreaInfoes" />
+          <NavigationProperty Name="BookingDelivareyType" Relationship="Self.FK__bookings__Bookin__48CFD27E" FromRole="bookings" ToRole="BookingDelivareyType" />
+          <NavigationProperty Name="deliveryMan" Relationship="Self.FK__bookings__dID__4AB81AF0" FromRole="bookings" ToRole="deliveryMen" />
+          <NavigationProperty Name="siteuser" Relationship="Self.FK__bookings__SiteUs__49C3F6B7" FromRole="bookings" ToRole="siteusers" />
+          <Property Name="bookweight" Type="Double" />
+        </EntityType>
+        <EntityType Name="deliveryMan">
+          <Key>
+            <PropertyRef Name="dID" />
+          </Key>
+          <Property Name="dID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dPhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dSalary" Type="Double" Nullable="false" />
+          <Property Name="dAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__bookings__dID__4AB81AF0" FromRole="deliveryMen" ToRole="bookings" />
+        </EntityType>
+        <EntityType Name="siteuser">
+          <Key>
+            <PropertyRef Name="SiteUserid" />
+          </Key>
+          <Property Name="SiteUserid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__bookings__SiteUs__49C3F6B7" FromRole="siteusers" ToRole="bookings" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK__siteusers__UserT__440B1D61" FromRole="siteusers" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usertype1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="siteusers" Relationship="Self.FK__siteusers__UserT__440B1D61" FromRole="UserType" ToRole="siteusers" />
+        </EntityType>
+        <Association Name="FK__bookings__DestAr__4CA06362">
+          <End Role="AreaInfoes" Type="Self.AreaInfo" Multiplicity="1" />
+          <End Role="bookings" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaInfoes">
+              <PropertyRef Name="aAreaID" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="DestAreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bookings__Origin__4BAC3F29">
+          <End Role="AreaInfoes" Type="Self.AreaInfo" Multiplicity="1" />
+          <End Role="bookings" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaInfoes">
+              <PropertyRef Name="aAreaID" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="OriginAreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bookings__Bookin__48CFD27E">
+          <End Role="BookingDelivareyType" Type="Self.BookingDelivareyType" Multiplicity="1" />
+          <End Role="bookings" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingDelivareyType">
+              <PropertyRef Name="BookingTypeId" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="BookingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bookings__dID__4AB81AF0">
+          <End Role="deliveryMen" Type="Self.deliveryMan" Multiplicity="1" />
+          <End Role="bookings" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deliveryMen">
+              <PropertyRef Name="dID" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="dID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__bookings__SiteUs__49C3F6B7">
+          <End Role="siteusers" Type="Self.siteuser" Multiplicity="1" />
+          <End Role="bookings" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="siteusers">
+              <PropertyRef Name="SiteUserid" />
+            </Principal>
+            <Dependent Role="bookings">
+              <PropertyRef Name="SiteUserid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__siteusers__UserT__440B1D61">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="siteusers" Type="Self.siteuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="siteusers">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CourierManagementsystemNextdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AreaInfoes" EntityType="Self.AreaInfo" />
+          <EntitySet Name="BookingDelivareyTypes" EntityType="Self.BookingDelivareyType" />
+          <EntitySet Name="bookings" EntityType="Self.booking" />
+          <EntitySet Name="deliveryMen" EntityType="Self.deliveryMan" />
+          <EntitySet Name="siteusers" EntityType="Self.siteuser" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <AssociationSet Name="FK__bookings__DestAr__4CA06362" Association="Self.FK__bookings__DestAr__4CA06362">
+            <End Role="AreaInfoes" EntitySet="AreaInfoes" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bookings__Origin__4BAC3F29" Association="Self.FK__bookings__Origin__4BAC3F29">
+            <End Role="AreaInfoes" EntitySet="AreaInfoes" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bookings__Bookin__48CFD27E" Association="Self.FK__bookings__Bookin__48CFD27E">
+            <End Role="BookingDelivareyType" EntitySet="BookingDelivareyTypes" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bookings__dID__4AB81AF0" Association="Self.FK__bookings__dID__4AB81AF0">
+            <End Role="deliveryMen" EntitySet="deliveryMen" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__bookings__SiteUs__49C3F6B7" Association="Self.FK__bookings__SiteUs__49C3F6B7">
+            <End Role="siteusers" EntitySet="siteusers" />
+            <End Role="bookings" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__siteusers__UserT__440B1D61" Association="Self.FK__siteusers__UserT__440B1D61">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="siteusers" EntitySet="siteusers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CourierManagementsystemNextdbModelStoreContainer" CdmEntityContainer="CourierManagementsystemNextdbEntities">
+          <EntitySetMapping Name="AreaInfoes">
+            <EntityTypeMapping TypeName="CourierManagementsystemNextdbModel.AreaInfo">
+              <MappingFragment StoreEntitySet="AreaInfoes">
+                <ScalarProperty Name="aAreaID" ColumnName="aAreaID" />
+                <ScalarProperty Name="aAreaName" ColumnName="aAreaName" />
+                <ScalarProperty Name="aCost" ColumnName="aCost" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingDelivareyTypes">
+            <EntityTypeMapping TypeName="CourierManagementsystemNextdbModel.BookingDelivareyType">
+              <MappingFragment StoreEntitySet="BookingDelivareyType">
+                <ScalarProperty Name="BookingTypeId" ColumnName="BookingTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="BTCost" ColumnName="BTCost" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="CourierManagementsystemNextdbModel.booking">
+              <MappingFragment StoreEntitySet="bookings">
+                <ScalarProperty Name="bookweight" ColumnName="bookweight" />
+                <ScalarProperty Name="bookID" ColumnName="bookID" />
+                <ScalarProperty Name="bookOriginFirstName" ColumnName="bookOriginFirstName" />
+                <ScalarProperty Name="bookOriginLastName" ColumnName="bookOriginLastName" />
+                <ScalarProperty Name="bookOriginAddress" ColumnName="bookOriginAddress" />
+                <ScalarProperty Name="bookOriginPhoneNo" ColumnName="bookOriginPhoneNo" />
+                <ScalarProperty Name="bookDestFirstName" ColumnName="bookDestFirstName" />
+                <ScalarProperty Name="bookDestLastName" ColumnName="bookDestLastName" />
+                <ScalarProperty Name="bookDestAddress" ColumnName="bookDestAddress" />
+                <ScalarProperty Name="bookDestPhoneNo" ColumnName="bookDestPhoneNo" />
+                <ScalarProperty Name="bookingProductWeight" ColumnName="bookingProductWeight" />
+                <ScalarProperty Name="bookDescription" ColumnName="bookDescription" />
+                <ScalarProperty Name="BookingTypeId" ColumnName="BookingTypeId" />
+                <ScalarProperty Name="bCost" ColumnName="bCost" />
+                <ScalarProperty Name="SiteUserid" ColumnName="SiteUserid" />
+                <ScalarProperty Name="dID" ColumnName="dID" />
+                <ScalarProperty Name="OriginAreaID" ColumnName="OriginAreaID" />
+                <ScalarProperty Name="DestAreaID" ColumnName="DestAreaID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+                <ScalarProperty Name="bookingDate" ColumnName="bookingDate" />
+                <ScalarProperty Name="statusbit" ColumnName="statusbit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deliveryMen">
+            <EntityTypeMapping TypeName="CourierManagementsystemNextdbModel.deliveryMan">
+              <MappingFragment StoreEntitySet="deliveryMen">
+                <ScalarProperty Name="dID" ColumnName="dID" />
+                <ScalarProperty Name="dFirstName" ColumnName="dFirstName" />
+                <ScalarProperty Name="dLastName" ColumnName="dLastName" />
+                <ScalarProperty Name="dPhoneNo" ColumnName="dPhoneNo" />
+                <ScalarProperty Name="dSalary" ColumnName="dSalary" />
+                <ScalarProperty Name="dAddress" ColumnName="dAddress" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="siteusers">
+            <EntityTypeMapping TypeName="CourierManagementsystemNextdbModel.siteuser">
+              <MappingFragment StoreEntitySet="siteusers">
+                <ScalarProperty Name="SiteUserid" ColumnName="SiteUserid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="CourierManagementsystemNextdbModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Usertype1" ColumnName="Usertype" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,170 @@
+﻿@model Courier_Management_system_Next.Models.booking
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bookOriginFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookOriginFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookOriginLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookOriginLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookOriginAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookOriginAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookOriginPhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookOriginPhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookDestFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookDestFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookDestLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookDestLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookDestAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookDestAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookDestPhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookDestPhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookingProductWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookingProductWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bookDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackingNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrackingNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusbit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusbit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaInfo.aAreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaInfo.aAreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaInfo1.aAreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaInfo1.aAreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingDelivareyType.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingDelivareyType.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deliveryMan.dFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deliveryMan.dFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.siteuser.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.siteuser.username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.bookID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,72 @@
+﻿@model Courier_Management_system_Next.Models.deliveryMan
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>deliveryMan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dPhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dPhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,71 @@
+﻿@model List<Courier_Management_system_Next.Models.siteuser>
+@{
+    ViewBag.Title = "GenerateUserStatusReport";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    
+
+    <style>
+        /* Add CSS styles for formatting */
+        /* Example styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Report Of all User</h1>
+    <table>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Booking Tracking Number</th>
+            <th>Booking Date</th>
+            <th>Booking Status</th>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.SiteUserid</td>
+                <td>@user.username</td>
+                <td>@user.email</td>
+                <td>@(user.status? "Active" : "Inactive")</td>
+                @if (user.bookings != null && user.bookings.Any())
+                {
+                    foreach (var booking in user.bookings)
+                    {
+                    <tr>
+                        <td colspan="4"></td> <!-- Empty cells for user details -->
+                        <td>@booking.TrackingNumber</td>
+                        <td>@booking.bookingDate</td>
+                        <td>@booking.status</td>
+                       
+                    </tr>
+                }
+            }
+            else
+            {
+                <td colspan="2">No bookings</td>
+            }
+                </tr>
+            }
+    </table>
+</body>
+</html>

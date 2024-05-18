@@ -1,0 +1,66 @@
+﻿@model List<Courier_Management_system_Next.Models.deliveryMan>
+@{
+    ViewBag.Title = "ShipperReport";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shipper Report with Bookings</title>
+    <style>
+        /* Add CSS styles for formatting */
+        /* Example styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shipper Report with Bookings</h1>
+    <table>
+        <tr>
+            <th>Shipper ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Salary</th>
+            <th>Address</th>
+            <th>Status</th>
+            <th>Assigned Booking Tracking ID</th>
+            <th>Booking Status</th>
+        </tr>
+        @foreach (var shipper in Model)
+        {
+            <tr>
+                <td>@shipper.dID</td>
+                <td>@shipper.dFirstName</td>
+                <td>@shipper.dLastName</td>
+                <td>@shipper.dPhoneNo</td>
+                <td>@shipper.dSalary</td>
+                <td>@shipper.dAddress</td>
+                <td>@(shipper.status ? "Active" : "Inactive")</td>
+                @if (shipper.bookings != null && shipper.bookings.Any())
+                {
+                    <td>@string.Join(", ", shipper.bookings.Select(b => b.TrackingNumber))</td>
+                    <td>@string.Join(", ", shipper.bookings.Select(b => b.status))</td>
+                }
+                else
+                {
+                    <td colspan="2">No bookings assigned</td>
+                }
+            </tr>
+        }
+    </table>
+</body>
+</html>
+

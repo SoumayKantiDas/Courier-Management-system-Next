@@ -1,0 +1,53 @@
+﻿@model Courier_Management_system_Next.Models.booking
+
+@{
+    ViewBag.Title = "GetTracingNumberAndCost";
+}
+
+<h2 class="text-center">Get Tracing Number And Cost</h2>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="mb-0">Booking Details</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.bCost)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.bCost)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.TrackingNumber)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.TrackingNumber)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.status)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.status)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary mx-2" })
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>

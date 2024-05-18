@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Dashboard of admin";
+}
+
+<h2>Admin Dashboard</h2>
+
+<!-- Include Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+    /* Define styles for the boxes */
+    .dashboard-box {
+        background-color: #34495e; /* Darker color */
+        text-align: center;
+        padding: 20px;
+        margin: 10px; /* Add margin for spacing */
+        border-radius: 10px; /* Rounded corners */
+        color: white; /* Text color */
+    }
+
+        /* Define styles for the icon */
+        .dashboard-box i {
+            font-size: 40px; /* Adjust icon size */
+            margin-bottom: 10px; /* Add space between icon and text */
+        }
+
+    /* Define styles for the links */
+    .dashboard-link {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Define styles for the container */
+    .dashboard-container {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping to next row */
+        justify-content: center; /* Center items horizontally */
+    }
+</style>
+
+<div class="dashboard-container">
+    <div class="dashboard-box">
+        <i class="fas fa-shipping-fast"></i>
+        <a href="@Url.Action("Index", "bookings")" class="dashboard-link">Manage Shipments</a>
+    </div>
+
+    <div class="dashboard-box">
+        <i class="fas fa-user-plus"></i>
+        <a href="@Url.Action("Create", "bookings")" class="dashboard-link">Add Courier</a>
+    </div>
+
+    <div class="dashboard-box">
+        <i class="fas fa-map"></i>
+        <a href="@Url.Action("Index", "AreaInfoes")" class="dashboard-link">Add New Area</a>
+    </div>
+
+    <div class="dashboard-box">
+        <i class="fas fa-chart-bar"></i>
+        <a href="@Url.Action("ConsignmentReport", "bookings")" class="dashboard-link">ConsignmentReport</a>
+    </div>
+
+    <div class="dashboard-box">
+        <i class="fas fa-users"></i>
+        <a href="@Url.Action("ShipperReport", "deliveryMen")" class="dashboard-link">Shipper Report</a>
+    </div>
+
+    <div class="dashboard-box">
+        <i class="far fa-calendar-alt"></i>
+        <a href="@Url.Action("PickupReport", "bookings")" class="dashboard-link">Pickup Date/Time Report</a>
+    </div>
+
+    <div class="dashboard-box">
+        <i class="fas fa-users"></i>
+        <a href="@Url.Action("GenerateUserStatusReport", "siteusers")" class="dashboard-link">Customer Report</a>
+    </div>
+</div>

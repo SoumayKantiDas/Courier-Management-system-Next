@@ -1,0 +1,57 @@
+﻿@model List<Courier_Management_system_Next.Models.booking>
+@{
+    ViewBag.Title = "PickupReport";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pickup Report</title>
+    <style>
+        /* Add CSS styles for formatting */
+        /* Example styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pickup Report</h1>
+    <table>
+        <tr>
+            <th>Booking ID</th>
+            <th>Origin First Name</th>
+            <th>Origin Last Name</th>
+            <th>Destination First Name</th>
+            <th>Destination Last Name</th>
+            <th>Booking Date/Time</th>
+            <th>Tracking Number</th>
+            <th>Status</th>
+        </tr>
+        @foreach (var pickup in Model)
+        {
+            <tr>
+                <td>@pickup.bookID</td>
+                <td>@pickup.bookOriginFirstName</td>
+                <td>@pickup.bookOriginLastName</td>
+                <td>@pickup.bookDestFirstName</td>
+                <td>@pickup.bookDestLastName</td>
+                <td>@pickup.bookingDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>@pickup.TrackingNumber</td>
+                <td>@pickup.status</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

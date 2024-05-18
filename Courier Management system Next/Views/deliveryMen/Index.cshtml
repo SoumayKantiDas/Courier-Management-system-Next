@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Courier_Management_system_Next.Models.deliveryMan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dPhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dPhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dSalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.dID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.dID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.dID })
+        </td>
+    </tr>
+}
+
+</table>

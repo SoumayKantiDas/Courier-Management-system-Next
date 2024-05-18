@@ -1,0 +1,66 @@
+﻿@model Courier_Management_system_Next.Models.deliveryMan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>deliveryMan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dPhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dPhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.dID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
