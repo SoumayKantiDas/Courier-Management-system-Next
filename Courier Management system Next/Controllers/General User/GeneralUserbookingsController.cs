@@ -17,12 +17,12 @@ namespace Courier_Management_system_Next.Controllers.General_User
         // GET: GeneralUserbookings
         public ActionResult Index()
         {
-            int? userId = Session["UserId"] as int?;
+            int? SiteUserid = Session["SiteUserid"] as int?;
             // Retrieve role ID from session
-            int? roleId = Session["UserTypeId"] as int?;
+            int? userTypeId = Session["UserTypeId"] as int?;
 
             var bookings = db.bookings
-            .Where(b => b.SiteUserid == userId)
+            .Where(b => b.SiteUserid == SiteUserid)
               .Include(b => b.AreaInfo)
                 .Include(b => b.AreaInfo1)
                  .Include(b => b.BookingDelivareyType)

@@ -17,7 +17,11 @@ namespace Courier_Management_system_Next.Controllers.General_User
         // GET: Generalsiteusers
         public ActionResult Index()
         {
-            int? userId = Session["UserId"] as int?;
+            int? SiteUserid = Session["SiteUserid"] as int?;
+            // Retrieve role ID from session
+            int? userTypeId = Session["UserTypeId"] as int?;
+
+            int? userId = Session["SiteUserid"] as int?;
             var siteusers = db.siteusers
               .Where(s => s.SiteUserid == userId) // Filter by user ID
               .ToList();
