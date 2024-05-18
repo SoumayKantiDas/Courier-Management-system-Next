@@ -22,7 +22,7 @@ namespace Courier_Management_system_Next.Models
     
         public int UserTypeId { get; set; }
         public string Usertype1 { get; set; }
-        public bool status { get; set; }
+        public Nullable<bool> status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<siteuser> siteusers { get; set; }

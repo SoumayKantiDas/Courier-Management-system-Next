@@ -24,9 +24,9 @@ namespace Courier_Management_system_Next.Models
         public string dFirstName { get; set; }
         public string dLastName { get; set; }
         public string dPhoneNo { get; set; }
-        public double dSalary { get; set; }
+        public Nullable<double> dSalary { get; set; }
         public string dAddress { get; set; }
-        public bool status { get; set; }
+        public Nullable<bool> status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<booking> bookings { get; set; }

@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e6c74be76642432180515dbcbef9e560" Name="Diagram1">
-        <EntityTypeShape EntityType="CourierManagementsystemNextdbModel.AreaInfo" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="CourierManagementsystemNextdbModel.BookingDelivareyType" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CourierManagementsystemNextdbModel.booking" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CourierManagementsystemNextdbModel.deliveryMan" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CourierManagementsystemNextdbModel.siteuser" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CourierManagementsystemNextdbModel.UserType" Width="1.5" PointX="1.5" PointY="17.375" IsExpanded="true" />
-        <AssociationConnector Association="CourierManagementsystemNextdbModel.FK__bookings__DestAr__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="CourierManagementsystemNextdbModel.FK__bookings__Origin__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="CourierManagementsystemNextdbModel.FK__bookings__Bookin__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="CourierManagementsystemNextdbModel.FK__bookings__dID__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="CourierManagementsystemNextdbModel.FK__bookings__SiteUs__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="CourierManagementsystemNextdbModel.FK__siteusers__UserT__440B1D61" ManuallyRouted="false" />
+      <Diagram DiagramId="43a2f693a33f4ec3925a44d3e62ecafe" Name="Diagram1">
+        <EntityTypeShape EntityType="CourierManagementSystemModel.AreaInfo" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierManagementSystemModel.BookingDelivareyType" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierManagementSystemModel.booking" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierManagementSystemModel.deliveryMan" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierManagementSystemModel.siteuser" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CourierManagementSystemModel.UserType" Width="1.5" PointX="1.5" PointY="17.375" IsExpanded="true" />
+        <AssociationConnector Association="CourierManagementSystemModel.FK__bookings__DestAr__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierManagementSystemModel.FK__bookings__Origin__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierManagementSystemModel.FK__bookings__Bookin__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierManagementSystemModel.FK__bookings__dID__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierManagementSystemModel.FK__bookings__SiteUs__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="CourierManagementSystemModel.FK__siteusers__UserT__440B1D61" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

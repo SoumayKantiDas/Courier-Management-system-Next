@@ -23,19 +23,18 @@ namespace Courier_Management_system_Next.Models
         public string bookDestLastName { get; set; }
         public string bookDestAddress { get; set; }
         public string bookDestPhoneNo { get; set; }
-        public double bookingProductWeight { get; set; }
+        public Nullable<double> bookingProductWeight { get; set; }
         public string bookDescription { get; set; }
-        public int BookingTypeId { get; set; }
-        public double bCost { get; set; }
-        public int SiteUserid { get; set; }
-        public int dID { get; set; }
-        public int OriginAreaID { get; set; }
-        public int DestAreaID { get; set; }
+        public Nullable<int> BookingTypeId { get; set; }
+        public Nullable<double> bCost { get; set; }
+        public Nullable<int> SiteUserid { get; set; }
+        public Nullable<int> dID { get; set; }
+        public Nullable<int> OriginAreaID { get; set; }
+        public Nullable<int> DestAreaID { get; set; }
         public string status { get; set; }
         public string TrackingNumber { get; set; }
-        public System.DateTime bookingDate { get; set; }
-        public bool statusbit { get; set; }
-        public Nullable<double> bookweight { get; set; }
+        public Nullable<System.DateTime> bookingDate { get; set; }
+        public Nullable<bool> statusbit { get; set; }
     
         public virtual AreaInfo AreaInfo { get; set; }
         public virtual AreaInfo AreaInfo1 { get; set; }

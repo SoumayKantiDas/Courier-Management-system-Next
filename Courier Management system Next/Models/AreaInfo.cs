@@ -23,8 +23,8 @@ namespace Courier_Management_system_Next.Models
     
         public int aAreaID { get; set; }
         public string aAreaName { get; set; }
-        public double aCost { get; set; }
-        public bool status { get; set; }
+        public Nullable<double> aCost { get; set; }
+        public Nullable<bool> status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<booking> bookings { get; set; }
