@@ -50,7 +50,7 @@ namespace Courier_Management_system_Next.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string username, string password)
         {
-            var user = db.siteusers.SingleOrDefault(u => u.username == username && u.status);
+            var user = db.siteusers.SingleOrDefault(u => u.username == username);
 
             if (user == null)
             {
@@ -64,11 +64,7 @@ namespace Courier_Management_system_Next.Controllers
                 return View();
             }
 
-            if (!user.status)
-            {
-                ModelState.AddModelError("", "Account is deactivated. Please activate your account.");
-                return View();
-            }
+           
             else
             {
 
