@@ -17,11 +17,8 @@ namespace Courier_Management_system_Next.Controllers.AdminController
         // GET: AreaInfoes
         public ActionResult Index()
         {
-            // Fetch the list of AreaInfoes where status is true
-            var activeAreas = db.AreaInfoes.Where(a => a.status == true).ToList();
-            return View(activeAreas);
+            return View(db.AreaInfoes.ToList());
         }
-
 
         // GET: AreaInfoes/Details/5
         public ActionResult Details(int? id)
@@ -49,10 +46,11 @@ namespace Courier_Management_system_Next.Controllers.AdminController
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "aAreaID,aAreaName,aCost")] AreaInfo areaInfo)
+        public ActionResult Create([Bind(Include = "aAreaID,aAreaName,aCost,status")] AreaInfo areaInfo)
         {
             if (ModelState.IsValid)
             {
+                areaInfo.status = true;
                 db.AreaInfoes.Add(areaInfo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -81,12 +79,11 @@ namespace Courier_Management_system_Next.Controllers.AdminController
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "aAreaID,aAreaName,aCost")] AreaInfo areaInfo)
+        public ActionResult Edit([Bind(Include = "aAreaID,aAreaName,aCost,status")] AreaInfo areaInfo)
         {
             if (ModelState.IsValid)
             {
                 areaInfo.status = true;
-                
                 db.Entry(areaInfo).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -94,7 +91,6 @@ namespace Courier_Management_system_Next.Controllers.AdminController
             return View(areaInfo);
         }
 
-       
         // GET: AreaInfoes/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -116,16 +112,10 @@ namespace Courier_Management_system_Next.Controllers.AdminController
         public ActionResult DeleteConfirmed(int id)
         {
             AreaInfo areaInfo = db.AreaInfoes.Find(id);
-            if (areaInfo != null)
-            {
-                // Set the status to false instead of removing the record
-                areaInfo.status = false;
-                db.Entry(areaInfo).State = EntityState.Modified;
-                db.SaveChanges();
-            }
+            db.AreaInfoes.Remove(areaInfo);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
-
 
         protected override void Dispose(bool disposing)
         {

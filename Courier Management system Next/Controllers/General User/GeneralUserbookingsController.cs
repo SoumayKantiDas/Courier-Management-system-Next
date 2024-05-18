@@ -48,7 +48,35 @@ namespace Courier_Management_system_Next.Controllers.General_User
             return View(booking);
         }
 
-       
+        public ActionResult GetCourierByTrackingNumberSeachbar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GetCourierByTrackingNumberSeachbar(string trackingNumber)
+        {
+            // Check if the email is not empty (you can add further validation if needed)
+            if (!string.IsNullOrEmpty(trackingNumber))
+            {
+                // Store the email in the session
+                Session["TrackingNumber"] = trackingNumber;
+                return RedirectToAction("GetCourierByTrackingNumber", "Bookings");
+            }
+
+            // Redirect back to the Getsession action
+            return RedirectToAction("GetCourierByTrackingNumberSeachbar");
+        }
+        public ActionResult GetCourierByTrackingNumber()
+        {
+            string truckingNumber = Session["TrackingNumber"] as string;
+            var Courier = db.bookings.Where(u => u.TrackingNumber == truckingNumber);
+
+            return View(Courier.ToList());
+
+
+        }
+
 
         // POST: GeneralUserbookings/Delete/5
         [HttpPost, ActionName("Delete")]

@@ -17,107 +17,11 @@ namespace Courier_Management_system_Next.Controllers.General_User
         // GET: Generalsiteusers
         public ActionResult Index()
         {
-            var siteusers = db.siteusers.Include(s => s.UserType);
+            int? userId = Session["UserId"] as int?;
+            var siteusers = db.siteusers
+              .Where(s => s.SiteUserid == userId) // Filter by user ID
+              .ToList();
             return View(siteusers.ToList());
-        }
-
-        // GET: Generalsiteusers/Details/5
-        public ActionResult Details(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            siteuser siteuser = db.siteusers.Find(id);
-            if (siteuser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(siteuser);
-        }
-
-        // GET: Generalsiteusers/Create
-        public ActionResult Create()
-        {
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Usertype1");
-            return View();
-        }
-
-        // POST: Generalsiteusers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SiteUserid,username,email,password,address,UserTypeId,status")] siteuser siteuser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.siteusers.Add(siteuser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Usertype1", siteuser.UserTypeId);
-            return View(siteuser);
-        }
-
-        // GET: Generalsiteusers/Edit/5
-        public ActionResult Edit(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            siteuser siteuser = db.siteusers.Find(id);
-            if (siteuser == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Usertype1", siteuser.UserTypeId);
-            return View(siteuser);
-        }
-
-        // POST: Generalsiteusers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SiteUserid,username,email,password,address,UserTypeId,status")] siteuser siteuser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(siteuser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Usertype1", siteuser.UserTypeId);
-            return View(siteuser);
-        }
-
-        // GET: Generalsiteusers/Delete/5
-        public ActionResult Delete(long? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            siteuser siteuser = db.siteusers.Find(id);
-            if (siteuser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(siteuser);
-        }
-
-        // POST: Generalsiteusers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
-        {
-            siteuser siteuser = db.siteusers.Find(id);
-            db.siteusers.Remove(siteuser);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

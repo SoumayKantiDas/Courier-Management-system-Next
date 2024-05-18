@@ -296,15 +296,13 @@
     <Content Include="Views\bookings\PickupReport.cshtml" />
     <Content Include="Views\GeneralUserbookings\Details.cshtml" />
     <Content Include="Views\GeneralUserbookings\Index.cshtml" />
-    <Content Include="Views\Generalsiteusers\Create.cshtml" />
-    <Content Include="Views\Generalsiteusers\Delete.cshtml" />
-    <Content Include="Views\Generalsiteusers\Details.cshtml" />
-    <Content Include="Views\Generalsiteusers\Edit.cshtml" />
     <Content Include="Views\Generalsiteusers\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Logout.cshtml" />
     <Content Include="Views\Shared\GeneralLayOutView.cshtml" />
+    <Content Include="Views\GeneralUserbookings\GetCourierByTrackingNumberSeachbar.cshtml" />
+    <Content Include="Views\GeneralUserbookings\GetCourierByTrackingNumber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
