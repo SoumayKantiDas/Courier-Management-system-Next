@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<Courier_Management_system_Next.Models.booking>
 
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/GeneralLayOutView.cshtml";
 }
 
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +27,7 @@
 
             <div class="col-auto">
                 <div class="card-body">
-                    @using (Html.BeginForm("GetCourierByTrackingNumber", "GeneralUserbookings", FormMethod.Post))
+                    @using (Html.BeginForm("GetCourierByTrackingNumberSeachbar", "GeneralUserbookings", FormMethod.Post))
                     {
                         <div class="form-group">
                             @Html.Label("Search By Tracking Number")
